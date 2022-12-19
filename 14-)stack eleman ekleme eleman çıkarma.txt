@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#define BOY 10
+struct yigin{
+    int dizi[BOY];
+    int indis; // top
+};
+struct yigin y1;
+
+
+void elemanEkleme(sayi){
+    if(y1.dizi==BOY-1){
+        printf("Kapasitesi doldu arkadaşım \n");
+    }
+    else{
+        y1.indis++;
+        y1.dizi[y1.indis]=sayi;
+    }
+
+}
+void elemanCikar(){
+    if(y1.indis==-1){
+        printf("Silinecek eleman yok \n");
+    }
+    else{
+        int cikansayi=y1.dizi[y1.indis];
+        y1.indis--;
+        printf("Çıkarlına sayı budur %d \n",cikansayi);
+    }
+
+
+}
+void yazdir(){
+    if(y1.indis==-1){
+        printf("Yığında eleman bulunamadı \n");
+    }
+    else{
+        int i ;
+        for(i=y1.indis;i>-1;i--){
+            printf(" %d\n ",y1.dizi[i]);
+        }
+    }
+
+}
+int main(){
+setlocale(LC_ALL,"Turkish");
+        y1.indis=-1;
+        int secim;
+        int sayi;
+
+        while(1){
+        printf("\n*****Stack****\n");
+        printf("Ekleme işlemi 1 (push )\n");
+        printf("Çıkarma işlemi 2 (pop)\n");
+        scanf("%d",&secim);
+        switch(secim){
+        case 1: printf("Eklenecek elemanı giriniz = ");
+                scanf("%d",&sayi);
+                elemanEkleme(sayi);
+                yazdir();
+                break;
+
+        case 2 :elemanCikar();
+                yazdir();
+                break;
+    }
+}
+    return 0;
+}
